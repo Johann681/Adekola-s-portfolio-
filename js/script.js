@@ -41,3 +41,13 @@ var typed = new Typed(".typing",{
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
+
+
+  // Automatically set target="_blank" for all external links
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('/') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });

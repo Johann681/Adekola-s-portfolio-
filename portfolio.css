@@ -235,204 +235,179 @@ body {
 }
 
 
-/* home */
+/* home layout */
 .home {
-    min-height: 100vh;
-    display: flex;
-    color: var(--text-black-900);
-  }
-  .home .home-info {
-    flex: 0 0 60%;
-    max-width: 60%;
-    padding-top: 50px;
-  }
-  
-  h3.hello {
-    font-size: 1.25rem; /* 20px */
-    margin: 15px 0;
-    font-weight: 400;
-    line-height: 1.2;
-  }
-  
-  h3 span {
-    font-family: "Clicker Script", cursive;
-    font-size: 2.5rem; /* 40px */
-    font-weight: 700;
-    color: var(--skin-color);
-    letter-spacing: 1px;
-  }
-  
-  h3 .my-profession {
-    font-size: 1.5rem; /* slightly smaller for a modern touch */
-    margin: 15px 0;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-black-900);
-  }
-  
-  .home-info p {
-    margin-bottom: 35px; /* reduced margin for a tighter layout */
-    font-size: 1rem; /* smaller text for a modern look */
-    line-height: 1.6;
-    color: var(--text-black-700);
-    font-family: 'Open Sans', sans-serif; /* modern sans-serif font */
-    font-weight: 300;
-  }
-  
-  .home .home-img {
-    flex: 0 0 40%;
-    max-width: 40%;
-    text-align: center;
-    position: relative;
-  }
-  
-  .home-img::after {
-    content: "";
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    border-bottom: 10px solid var(--skin-color);
-    border-right: 10px solid var(--skin-color);
-    right: -25px;
-    bottom: -40px;
-  }
-  
-  .home-img::before {
-    content: "";
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    border-left: 10px solid var(--skin-color);
-    border-top: 10px solid var(--skin-color);
-    left: -19px;
-    top: -45px;
-  }
-  
-  .home .home-img img {
-    margin: auto;
-    border-radius: 5px;
-    height: 400px;
-    display: block;
-    max-width: 100%;
-    object-fit: cover;
-  }
+  min-height: 100vh;
+  display: flex;
+  padding-top: 80px;
+  color: var(--text-black-900);
+}
 
-  /* Responsive Styles */
+.home .home-info {
+  flex: 0 0 60%;
+  max-width: 60%;
+  padding-top: 50px;
+}
 
-/* Medium devices (max-width: 991px) */
+h3.hello {
+  font-size: 1.25rem;
+  margin: 15px 0;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h3 span {
+  font-family: "Clicker Script", cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--skin-color);
+  letter-spacing: 1px;
+}
+
+h3 .my-profession {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-black-900);
+}
+
+.home-info p {
+  margin-bottom: 35px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-black-700);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+.home .home-img {
+  flex: 0 0 40%;
+  max-width: 40%;
+  text-align: center;
+  position: relative;
+}
+
+/* === 4 BIG BORDER CORNER BOXES === */
+.home-img::before,
+.home-img::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 10px solid var(--skin-color);
+  z-index: 1;
+}
+
+.home-img::before {
+  top: -45px;
+  left: -25px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.home-img::after {
+  bottom: -45px;
+  right: -25px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Simulated top-right and bottom-left big boxes */
+.home-img .corner-top-right,
+.home-img .corner-bottom-left {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 10px solid var(--skin-color);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-img .corner-top-right {
+  top: -45px;
+  right: -25px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.home-img .corner-bottom-left {
+  bottom: -45px;
+  left: -25px;
+  border-right: none;
+  border-top: none;
+}
+
+/* === MAIN IMAGE === */
+.home .home-img img {
+  margin: auto;
+  border-radius: 5px;
+  height: 400px;
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+/* === 8 SMALL FLOATING BOXES === */
+.float-box {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--skin-color);
+  opacity: 0.4;
+  border-radius: 6px;
+  animation: floatAnim 4s ease-in-out infinite alternate;
+  z-index: 0;
+  box-shadow: 0 0 6px var(--skin-color);
+}
+
+/* random positions */
+.box1 { top: -10px; left: -10px; animation-delay: 0s; }
+.box2 { top: 50px; right: -15px; animation-delay: 0.4s; }
+.box3 { bottom: 20px; left: -15px; animation-delay: 0.8s; }
+.box4 { bottom: -10px; right: 20px; animation-delay: 1.2s; }
+.box5 { top: 30%; left: -20px; animation-delay: 1.6s; }
+.box6 { bottom: 40%; right: -20px; animation-delay: 2s; }
+.box7 { top: -20px; right: 40px; animation-delay: 2.4s; }
+.box8 { bottom: -20px; left: 30px; animation-delay: 2.8s; }
+
+/* animation */
+@keyframes floatAnim {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(6px, 6px) rotate(12deg); }
+}
+
+/* === RESPONSIVE CLEANUP === */
 @media (max-width: 991px) {
-  /* Reduce container width and section padding */
-  .container {
-    max-width: 90%;
-    padding: 40px 20px;
-  }
-  .section {
-    padding: 0 20px;
-  }
-  /* Adjust section title font size */
-  .section-title h2 {
-    font-size: 32px;
-  }
-  /* In the Home section, stack content vertically */
   .home {
     flex-direction: column;
     text-align: center;
   }
+
   .home .home-info,
   .home .home-img {
-    flex: 0 0 100%;
     max-width: 100%;
+    flex: 0 0 100%;
   }
+
+  .home-img::before,
+  .home-img::after,
+  .home-img .corner-top-right,
+  .home-img .corner-bottom-left,
+  .float-box {
+    display: none;
+  }
+
   .home .home-info {
     padding-top: 30px;
   }
-  /* Hide decorative pseudo-elements on smaller screens */
-  .home-img::after,
-  .home-img::before {
-    display: none;
-  }
-  /* Ensure home image scales nicely */
+
   .home .home-img img {
     height: auto;
-    max-width: 100%;
   }
 }
-
-/* Small devices (max-width: 767px) */
-@media (max-width: 767px) {
-  /* Adjust overall font size */
-  body {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  /* Reduce section title size */
-  .section-title h2 {
-    font-size: 28px;
-  }
-  /* Reduce button padding and font size */
-  .btn {
-    padding: 15px 30px;
-    font-size: 14px;
-  }
-  /* For content sections, reduce padding for better fit */
-  .section {
-    padding: 0 15px;
-  }
-  .container {
-    padding: 30px 15px;
-  }
-}
-
-/* Extra-small devices (max-width: 575px) */
-@media (max-width: 575px) {
-  /* Further reduce section and container padding */
-  /* Reduce overall section container padding */
-.section .container {
-  padding: 40px;       /* Reduced from 60px */
-  padding-bottom: 40px; /* Reduced from 70px */
-}
-
-/* Home Section Adjustments */
-.home .home-info {
-  padding-top: 30px;    /* Reduced top padding from 50px */
-  padding-bottom: 15px; /* Added bottom padding to ensure balanced spacing */
-}
-
-/* Reduce spacing between the paragraph and the button */
-.home-info p {
-  margin-bottom: 20px;  /* Reduced from 35px */
-}
-
-/* Optionally adjust the padding on the home-info and home-img containers */
-.home .home-info,
-.home .home-img {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-ntainer {
-    padding: 20px 10px;
-  }
-  /* Smaller section title and button text */
-  .section-title h2 {
-    font-size: 24px;
-  }
-  .btn {
-    padding: 12px 25px;
-    font-size: 13px;
-  }
-  /* Adjust text sizes in home section */
-  .home .home-info h3.hello {
-    font-size: 1.1rem;
-  }
-  .home .home-info h3 span {
-    font-size: 2rem;
-  }
-  .home .home-info p {
-    font-size: 0.9rem;
-  }
-}
-
-  
 
 /* about */
 
